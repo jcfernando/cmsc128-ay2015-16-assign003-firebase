@@ -9,17 +9,17 @@
   <script src="js/firebase.js"></script>
 
   <!-- CSS  -->
-  <link href="css/index.css" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/index.css">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">ROGUE</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Guest List</a></li>
-        <li><a href="#">Sign up sheet</a></li>
+        <li><a href="#signupsheet">Sign up sheet</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -78,45 +78,36 @@
       </div>
 
       <!-- Forms section -->
-      <div class="row">
+      <div class="row" id="signupsheet">
         <div class="collection with-headers">
           <div class="collection-header collection-item"><h4> Sign Up sheet </h4></div>
 
-          <div class="input-field col s12 m12 l12">
-            <input id="full-name" type="text" class="validate">
-            <label for="full-name">Full Name</label>
-          </div>
+          <form>
+            <div class="input-field col s12 m12 l12">
+              <input id="full-name" type="text" class="validate" required>
+              <label for="full-name">Full Name</label>
+            </div>
 
-          <div class="input-field col s12 m12 l12">
-            <input id="organization" type="text" class="validate">
-            <label for="organization">Organization</label>
-          </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="organization" type="text" class="validate" required>
+              <label for="organization">Organization</label>
+            </div>
 
-          <div class="input-field col s12 m12 l12">
-            <input id="contact" type="text" class="validate">
-            <label for="contact">Contact No.</label>
-          </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="contact" type="text" class="validate" required>
+              <label for="contact">Contact No.</label>
+            </div>
 
-          <div class="button collection-item">
-          <button class="btn waves-effect waves-light" type="submit" name="action" onClick="addToCloud()">Submit
-            <i class="material-icons right">send</i>
-          </button>
-          </div>
+            <div class="button collection-item">
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="submit-button" href="#">Submit
+            </button>
+            </div>
+          </form>
 
         </div>
       </div>
 
     </div>
-     <script>
-      function addToCloud(){
-      var myDataRef = new Firebase('https://cmsc128-fernando.firebaseio.com/');
-      $('#submit-button').keypress(function (e) {
-          var fullName = $('#full-name').val();
-          var organization = $('#organization').val();
-          var contact = $('#contact').val();
-          myDataRef.push({ 'Full Name' : 'fullName', 'organization': 'organization', 'contact' : 'contact'});
-      });}
-    </script>
     <br><br>
 
     <div class="section">
@@ -162,9 +153,11 @@
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
   <script src="js/materialize.js"></script>
+  <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/script.js"></script>
 
   </body>
 </html>

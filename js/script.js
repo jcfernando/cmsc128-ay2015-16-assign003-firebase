@@ -6,17 +6,28 @@ var myDataRef = new Firebase('https://cmsc128-fernando.firebaseio.com/');
           var fullName = $('#full-name').val();
           var organization = $('#organization').val();
           var contact = $('#contact').val();
-          myDataRef.push({ 'Full Name' : fullName, 'organization': organization, 'contact' : contact});
+          myDataRef.push({ 'fullName' : fullName, 'organization': organization, 'contact' : contact});
           $('#full-name').val("");
           $('#organization').val("");
           $('#contact').val("");
+          
+          
+          
+          
     });
 
    	myDataRef.on('child_added', function(snapshot) {
        var message = snapshot.val();
-       displayChatMessage(message.name, message.text);
+       displayChatMessage(message.fullName, message.organization, message.contact);
     });
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
+      function displayChatMessage(fullName, organization, contact) {
+			var template = '<tr>' + 
+              					'<td>' + fullName + '</td>' +
+              					'<td>' + organization + '</td>' +
+              					'<td>' + contact + '</td>' +
+           				  '</tr>';
+           				  
+      	$('#table-body').append(template);
+      };	
+      
+      
